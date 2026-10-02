@@ -1,0 +1,290 @@
+html, body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color-scheme: light;
+  /* Maritime Glassmorphism theme: pale icy blue top to vibrant sky blue bottom */
+  --page-bg: linear-gradient(180deg, #e8f4fc 0%, #a0d7f9 42%, #0284c7 100%);
+  --nav-bg: #081e3d;
+  --nav-hover: #123766;
+  --gold: #c89b2b;
+  --gold-light: #dfb141;
+  --gold-subtle: rgba(200, 155, 43, 0.14);
+  --gold-border: rgba(200, 155, 43, 0.45);
+  --accent-border: rgba(255, 255, 255, 0.5);
+  --text-main: #081e3d;
+  --text-muted: #1e3d64;
+  --surface-glass: rgba(255, 255, 255, 0.6);
+  --surface-border: rgba(255, 255, 255, 0.5);
+  --surface-shadow: 0 20px 48px -12px rgba(8, 30, 61, 0.14), 0 6px 18px -4px rgba(8, 30, 61, 0.08);
+  --radius-panel: 16px;
+  --font-title: Arial, Helvetica, sans-serif;
+  --font-subheading: Arial, Helvetica, sans-serif;
+  --font-body: Arial, Helvetica, sans-serif;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-main);
+  background: var(--page-bg);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: auto 0 0;
+  height: 35vh;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(100% 75% at 50% 100%, rgba(255, 255, 255, 0.22) 0 42%, transparent 43%),
+    radial-gradient(100% 90% at 48% 115%, rgba(2, 132, 199, 0.2) 0 48%, transparent 49%);
+}
+
+button, input, select {
+  font: inherit;
+}
+
+.date-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.date-field {
+  min-height: 48px;
+  width: 100%;
+  padding: 0 0.875rem;
+  border: 1px solid #b9d5ec !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: var(--text-main) !important;
+}
+
+.date-field:focus-visible,
+.calendar-year:focus-visible,
+.date-toggle:focus-visible,
+.calendar-nav:focus-visible,
+.calendar-day:focus-visible {
+  outline: 3px solid rgba(110, 198, 240, 0.65);
+  outline-offset: 2px;
+}
+
+.date-toggle,
+.calendar-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--accent-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--nav-bg);
+  cursor: pointer;
+}
+
+.date-toggle {
+  position: absolute;
+  right: 4px;
+  width: 40px;
+  height: 40px;
+}
+
+.date-toggle:hover,
+.calendar-nav:hover {
+  background: #eaf8ff;
+}
+
+.calendar-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 20;
+  width: min(320px, calc(100vw - 48px));
+  padding: 14px;
+  border: 1px solid var(--surface-border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--text-main);
+  box-shadow: var(--surface-shadow);
+  backdrop-filter: blur(12px);
+}
+
+.calendar-header,
+.calendar-week,
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: center;
+  gap: 4px;
+}
+
+.calendar-header {
+  grid-template-columns: 36px 1fr 72px 36px;
+  margin-bottom: 10px;
+}
+
+.calendar-title {
+  text-align: center;
+  font-weight: 700;
+}
+
+.calendar-year {
+  min-height: 36px;
+  border: 1px solid var(--accent-border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--text-main);
+}
+
+.calendar-nav {
+  width: 36px;
+  height: 36px;
+}
+
+.calendar-week {
+  margin-bottom: 4px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.calendar-day {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  aspect-ratio: 1;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+button.calendar-day:hover {
+  border-color: var(--accent-border);
+  background: #eaf8ff;
+}
+
+button.calendar-day.is-selected {
+  border-color: var(--gold);
+  background: var(--nav-bg);
+  color: #fff;
+}
+
+.calendar-day.is-empty {
+  cursor: default;
+}
+
+main[class*="_shell_"] > header[class*="_header_"] + div[class*="_content_"] > div[style*="max-width: 880px"] {
+  border: 1px solid var(--surface-border) !important;
+  border-top: 3px solid var(--gold) !important;
+  border-radius: var(--radius-panel) !important;
+  background: var(--surface-glass) !important;
+  box-shadow: var(--surface-shadow) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+main[class*="_shell_"] > header[class*="_header_"] + div[class*="_content_"] > div[style*="max-width: 880px"] > div[style*="inline-flex"] {
+  border-color: var(--surface-border) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Maritime Glassmorphism Global Utilities */
+.maritime-glass-card,
+.maritime-glass-panel,
+.maritime-glass-container {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--surface-shadow);
+}
+
+.maritime-glass-nav {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 16px 36px -10px rgba(8, 30, 61, 0.12), 0 4px 14px rgba(8, 30, 61, 0.05);
+}
+
+.maritime-title {
+  font-family: var(--font-title);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy-deep);
+}
+
+.maritime-subheading {
+  font-family: var(--font-subheading);
+  font-weight: 600;
+  color: var(--navy-subtle);
+}
+
+.maritime-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  padding: 0.75rem 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--nav-bg);
+  color: #ffffff;
+  border: 1.5px solid var(--gold);
+  cursor: pointer;
+  box-shadow: 0 8px 20px -4px rgba(8, 30, 61, 0.25);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.maritime-pill-btn:hover {
+  background: var(--nav-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px -4px rgba(8, 30, 61, 0.32);
+}
+
+.maritime-pill-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  padding: 0.75rem 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--navy-deep);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  box-shadow: 0 6px 16px -4px rgba(8, 30, 61, 0.1);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.maritime-pill-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

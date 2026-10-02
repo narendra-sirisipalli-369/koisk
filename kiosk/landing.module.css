@@ -1,0 +1,1016 @@
+/* ==========================================================================
+   INS DEGA - LOGISTICS DEPARTMENT
+   MARITIME GLASSMORPHISM THEME
+   - Main body: vertical linear gradient (pale icy blue to vibrant sky blue)
+   - Primary containers, banners, cards: rgba(255,255,255,0.6), blur(12px), 1px solid rgba(255,255,255,0.5)
+   - Deep navy blue typography (#081e3d), bold geometric sans titles (wide letter spacing), classic serif subheadings
+   - Subtle official gold/yellow accent (#c89b2b)
+   - Pill shapes (border-radius: 9999px) for navbars & buttons
+   - Softer rounded corners (16px) for larger content panels
+   - Very soft, diffuse drop shadows
+   ========================================================================== */
+
+.viewport {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Vertical linear gradient: pale icy blue top to vibrant sky blue bottom */
+  background: linear-gradient(180deg, #e8f4fc 0%, #a0d7f9 42%, #0284c7 100%);
+  background-attachment: fixed;
+  color: #081e3d;
+  font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: clamp(12px, 2vh, 20px);
+}
+
+.viewport::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 12% 14%, rgba(255, 255, 255, 0.45), transparent 22rem),
+    radial-gradient(ellipse at 88% 22%, rgba(255, 255, 255, 0.35), transparent 24rem),
+    radial-gradient(100% 36% at 52% 105%, rgba(255, 255, 255, 0.25) 0 45%, transparent 46%),
+    radial-gradient(100% 32% at 48% 115%, rgba(2, 132, 199, 0.22) 0 42%, transparent 43%);
+}
+
+/* Subtle Government Security Watermark Grid Pattern */
+.securityWatermarkGrid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(8, 30, 61, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 30, 61, 0.09) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+  z-index: 1;
+  mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.85) 0%, transparent 90%);
+}
+
+/* ==========================================================================
+   NAVIGATION BAR: MAXIMUM BORDER RADIUS (PILL SHAPE) + GLASSMORPHISM
+   ========================================================================== */
+
+.header {
+  position: relative;
+  z-index: 10;
+  padding: clamp(16px, 2.5vh, 28px) clamp(16px, 4vw, 48px) 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.headerScene {
+  position: relative;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: clamp(10px, 1.6vh, 16px) clamp(18px, 3.5vw, 36px); 
+  /* Maximum border-radius for navigation bars: Pill Shape */
+  border-radius: 9999px;
+  /* Glassmorphism on primary navigation bar */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  /* Very soft, diffuse drop shadow */
+  box-shadow: 0 16px 36px -10px rgba(8, 30, 61, 0.12), 0 4px 14px rgba(8, 30, 61, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerGrid {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.crestWrapperLeft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.crestWrapperRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.emblemLeft {
+  display: block;
+  object-fit: contain;
+  width: clamp(68px, 5.2vw, 88px);
+  height: clamp(68px, 5.2vw, 88px);
+  filter: drop-shadow(0 3px 8px rgba(8, 30, 61, 0.14));
+  transition: transform 0.2s ease;
+}
+
+.emblemRight {
+  display: block;
+  object-fit: contain;
+  width: clamp(76px, 5.8vw, 98px);
+  height: clamp(76px, 5.8vw, 98px);
+  filter: drop-shadow(0 3px 8px rgba(8, 30, 61, 0.14));
+  transition: transform 0.2s ease;
+}
+
+.emblemLeft:hover,
+.emblemRight:hover {
+  transform: scale(1.04);
+}
+
+.headerCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.headerGlass {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Typography: Deep navy blue for high contrast, bold geometric Sans-Serif with wide letter spacing */
+.headerTitleNavy {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.4rem, 2.4vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #081e3d;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.15;
+}
+
+/* Typography: Classic Serif font for subheadings */
+.headerCommandSub {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.72rem, 0.95vw, 0.88rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #173b63;
+  text-transform: uppercase;
+  margin: 3px 0 0;
+}
+
+/* ==========================================================================
+   OFFICIAL MARITIME BANNER (GLASSMORPHISM + SOFTER 16PX ROUNDED CORNERS)
+   ========================================================================== */
+
+.bannerSection {
+  position: relative;
+  z-index: 10;
+  max-width: 1260px;
+  width: 100%;
+  margin: clamp(12px, 2vh, 18px) auto 0;
+  padding: 0 clamp(16px, 4vw, 48px);
+  box-sizing: border-box;
+}
+
+.glassBanner {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 16px 36px -12px rgba(8, 30, 61, 0.1), 0 4px 12px rgba(8, 30, 61, 0.04);
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.bannerLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bannerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: rgba(200, 155, 43, 0.15);
+  border: 1px solid rgba(200, 155, 43, 0.45);
+  color: #081e3d;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.bannerGoldIcon {
+  color: #c89b2b;
+  display: flex;
+  align-items: center;
+}
+
+.bannerText {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.78rem, 1vw, 0.88rem);
+  font-weight: 500;
+  color: #081e3d;
+  letter-spacing: 0.04em;
+}
+
+.bannerLinks {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bannerPillLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #081e3d;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.bannerPillLink:hover {
+  background: #ffffff;
+  border-color: #c89b2b;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   PRIMARY CONTENT CONTAINER (HERO PANEL: 16PX CORNERS + GLASSMORPHISM)
+   ========================================================================== */
+
+.heroSection {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(10px, 2vh, 20px) clamp(16px, 4vw, 48px);
+  width: 100%;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.heroPanel {
+  position: relative;
+  width: min(880px, 100%);
+  /* Semi-transparent white background: rgba(255, 255, 255, 0.6) */
+  background: rgba(255, 255, 255, 0.6);
+  /* Backdrop blur effect */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Delicate 1px solid white border with 50% opacity */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  /* Softer rounded corners (16px) for larger content panels */
+  border-radius: 16px;
+  /* Very soft, diffuse drop shadow */
+  box-shadow:
+    0 24px 52px -12px rgba(8, 30, 61, 0.16),
+    0 6px 20px -4px rgba(8, 30, 61, 0.08);
+  padding: clamp(40px, 6vh, 60px) clamp(24px, 5vw, 56px);
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.heroPanel:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(200, 155, 43, 0.5);
+  box-shadow:
+    0 32px 64px -12px rgba(8, 30, 61, 0.22),
+    0 10px 26px -4px rgba(8, 30, 61, 0.12),
+    0 0 0 1px rgba(200, 155, 43, 0.15);
+}
+
+/* Operational Security Badge */
+.securityPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px;
+  background: rgba(8, 30, 61, 0.06);
+  border: 1px solid rgba(8, 30, 61, 0.12);
+  /* Pill shape badge */
+  border-radius: 9999px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #173b63;
+  text-transform: uppercase;
+  margin-bottom: clamp(8px, 1.2vh, 14px);
+}
+
+.securityDot {
+  width: 6px;
+  height: 6px;
+  background-color: #059669;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(5, 150, 105, 0.6);
+}
+
+/* Sub-Heading 1: INS DEGA (Classic Serif font, subtle official gold accent: #c89b2b) */
+.stationTitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c89b2b;
+  margin: 0 0 clamp(14px, 2vh, 22px);
+}
+
+/* Subtle Gold Divider */
+.goldDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: clamp(8px, 1.2vh, 12px) auto;
+  max-width: 220px;
+  width: 45%;
+  gap: 12px;
+}
+
+.goldLineLeft,
+.goldLineRight {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 155, 43, 0.55) 100%
+  );
+}
+
+.goldLineRight {
+  background: linear-gradient(
+    90deg,
+    rgba(200, 155, 43, 0.55) 0%,
+    transparent 100%
+  );
+}
+
+.goldPip {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background-color: #c89b2b;
+}
+
+/* Main Title: FILE STATUS MANAGEMENT SYSTEM (Bold, geometric Sans-Serif with wide letter spacing, deep navy blue) */
+.primaryTitleWrap {
+  margin: clamp(16px, 2.4vh, 26px) 0;
+}
+
+.primaryTitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.7rem, 2.9vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #081e3d;
+  margin: 0;
+}
+
+/* Sub-Heading 2: Logistics Department (Classic Serif font) */
+.departmentTitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.08rem, 1.5vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #081e3d;
+  margin: clamp(6px, 1vh, 10px) 0 0;
+}
+
+/* Tagline / Subheading: YOUR ONE STOP SOLUTION */
+.tagline {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #173b63;
+  margin: clamp(26px, 3.4vh, 36px) 0 0;
+}
+
+.taglineLetter {
+  display: inline-block;
+  opacity: 0;
+  animation: taglineLetterIn 0.5s ease forwards;
+}
+
+@keyframes taglineLetterIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   BUTTONS: MAXIMUM BORDER RADIUS (PILL SHAPE) + OFFICIAL GOLD ACCENT
+   ========================================================================== */
+
+.ctaWrap {
+  margin-top: clamp(20px, 3vh, 28px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 25;
+}
+
+.beginButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 230px;
+  height: 54px;
+  padding: 0 30px;
+  background: #081e3d;
+  border: 1.5px solid #c89b2b;
+  /* Maximum border-radius for buttons: Pill Shape */
+  border-radius: 9999px;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  /* Soft, diffuse drop shadow */
+  box-shadow: 0 10px 24px -6px rgba(8, 30, 61, 0.35);
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  /* Maritime Glassmorphic Touch-To-Begin Pulse Animation */
+  animation: buttonPulse 2.8s infinite ease-in-out;
+}
+
+/* Light sweep shimmer effect across button surface */
+.beginButton::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -70%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 15%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(200, 155, 43, 0.25) 65%,
+    transparent 85%
+  );
+  transform: rotate(25deg);
+  animation: buttonShimmer 3.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.beginButton:hover {
+  background: #103463;
+  border-color: #dfb141;
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    0 16px 32px -6px rgba(8, 30, 61, 0.45),
+    0 0 16px rgba(200, 155, 43, 0.4);
+  animation-play-state: paused;
+}
+
+.beginButton:focus-visible {
+  outline: 2px solid #c89b2b;
+  outline-offset: 3px;
+  background: #103463;
+}
+
+.beginButton:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 4px 12px rgba(8, 30, 61, 0.25);
+}
+
+.btnChevron {
+  color: #c89b2b;
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+  animation: chevronNudge 1.8s infinite ease-in-out;
+}
+
+.beginButton:hover .btnChevron {
+  animation-play-state: paused;
+  transform: translateX(5px);
+}
+
+/* Animation Keyframes: Pulse, Shimmer, and Chevron Nudge */
+@keyframes buttonPulse {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 
+      0 10px 24px -6px rgba(8, 30, 61, 0.35),
+      0 0 0 0 rgba(200, 155, 43, 0.5),
+      0 0 0 0 rgba(14, 165, 233, 0.3);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.025);
+    box-shadow: 
+      0 16px 34px -6px rgba(8, 30, 61, 0.42),
+      0 0 0 7px rgba(200, 155, 43, 0.18),
+      0 0 0 14px rgba(14, 165, 233, 0);
+  }
+}
+
+@keyframes buttonShimmer {
+  0% {
+    left: -70%;
+  }
+  28%, 100% {
+    left: 150%;
+  }
+}
+
+@keyframes chevronNudge {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+.secondaryPillButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 180px;
+  height: 52px;
+  padding: 0 24px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 9999px;
+  color: #081e3d;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 6px 18px -4px rgba(8, 30, 61, 0.1);
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.secondaryPillButton:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #c89b2b;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px -4px rgba(8, 30, 61, 0.16);
+}
+
+/* ==========================================================================
+   PRIMARY CARDS GRID: 16PX CORNERS + GLASSMORPHISM + SOFT DIFFUSE SHADOWS
+   ========================================================================== */
+
+.cardsSection {
+  position: relative;
+  z-index: 10;
+  max-width: 1260px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 48px);
+  box-sizing: border-box;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 24px);
+}
+
+.glassCard {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 
+    0 18px 42px -10px rgba(8, 30, 61, 0.12),
+    0 4px 14px -2px rgba(8, 30, 61, 0.05);
+  padding: clamp(20px, 3vh, 28px) clamp(18px, 2.5vw, 24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.glassCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(200, 155, 43, 0.5);
+  box-shadow: 
+    0 24px 50px -12px rgba(8, 30, 61, 0.18),
+    0 8px 20px -3px rgba(8, 30, 61, 0.08);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.cardIconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: rgba(8, 30, 61, 0.08);
+  border: 1px solid rgba(200, 155, 43, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #081e3d;
+}
+
+.cardBadge {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #081e3d;
+  background: rgba(200, 155, 43, 0.15);
+  border: 1px solid rgba(200, 155, 43, 0.4);
+  padding: 3px 10px;
+  border-radius: 9999px;
+}
+
+/* Card Titles & Subheadings */
+.cardTitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #081e3d;
+  margin: 0 0 6px;
+}
+
+.cardSubheading {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #1e3d64;
+  line-height: 1.45;
+  margin: 0 0 18px;
+}
+
+.cardFooter {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardMeta {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.76rem;
+  color: #2b5078;
+}
+
+.cardButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: #081e3d;
+  border: 1px solid #c89b2b;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(8, 30, 61, 0.2);
+}
+
+.cardButton:hover {
+  background: #123766;
+  border-color: #dfb141;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   FOOTER SECTION: PILL CONTAINER + MARITIME GLASSMORPHISM
+   ========================================================================== */
+
+.footer {
+  position: relative;
+  z-index: 10;
+  max-width: 1260px;
+  width: 100%;
+  margin: clamp(16px, 2.5vh, 24px) auto 0;
+  padding: 0 clamp(16px, 4vw, 48px);
+  box-sizing: border-box;
+}
+
+.footerGrid {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 9999px;
+  box-shadow: 0 12px 30px -8px rgba(8, 30, 61, 0.1);
+  padding: 12px 28px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: #081e3d;
+  box-sizing: border-box;
+}
+
+.footerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  color: #081e3d;
+}
+
+.footerRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  background-color: #059669;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(5, 150, 105, 0.6);
+}
+
+.istTime {
+  color: #081e3d;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================================================
+   LOGIN FORM: GLASSMORPHISM INPUTS + PILL BUTTONS
+   ========================================================================== */
+
+.loginPanel {
+  width: min(480px, 100%);
+}
+
+.loginTitle {
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vh, 18px);
+  margin-top: clamp(18px, 2.6vh, 26px);
+  text-align: left;
+}
+
+.formLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #173b63;
+}
+
+.formInput {
+  min-height: 52px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(8, 30, 61, 0.18);
+  background: rgba(255, 255, 255, 0.75);
+  color: #081e3d;
+  padding: 0 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.formInput::placeholder {
+  color: rgba(8, 30, 61, 0.4);
+  font-weight: 500;
+}
+
+.formInput:focus {
+  border-color: #c89b2b;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 3px rgba(200, 155, 43, 0.18);
+}
+
+.formInput:disabled {
+  background: rgba(8, 30, 61, 0.05);
+  color: rgba(8, 30, 61, 0.4);
+  cursor: not-allowed;
+}
+
+.formSelect {
+  cursor: pointer;
+}
+
+.passwordRow {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 9999px;
+  background: transparent;
+  color: #173b63;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.passwordToggle:hover {
+  background: rgba(8, 30, 61, 0.08);
+}
+
+.formAlert {
+  border-radius: 10px;
+  border: 1px solid rgba(178, 34, 34, 0.35);
+  background: rgba(178, 34, 34, 0.08);
+  color: #7a1f1f;
+  padding: 10px 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.formActions {
+  margin-top: clamp(6px, 1vh, 10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE, TABLET, DESKTOP)
+   ========================================================================== */
+
+@media (max-width: 980px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .bannerSection,
+  .cardsSection {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerScene {
+    border-radius: 24px;
+    padding: 12px 18px;
+  }
+  .headerGrid {
+    grid-template-columns: auto 1fr auto;
+    gap: 8px;
+  }
+  .headerTitleNavy {
+    font-size: 1.3rem;
+    letter-spacing: 0.12em;
+  }
+  .headerCommandSub {
+    font-size: 0.68rem;
+  }
+  .glassBanner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 18px;
+  }
+  .bannerLinks {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .heroPanel {
+    padding: 24px 18px;
+    border-radius: 16px;
+  }
+  .primaryTitle {
+    font-size: 1.45rem;
+    letter-spacing: 0.1em;
+  }
+  .stationTitle {
+    font-size: 1.1rem;
+  }
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+  .ctaWrap {
+    flex-direction: column;
+    width: 100%;
+  }
+  .beginButton,
+  .secondaryPillButton {
+    width: 100%;
+    min-width: 0;
+  }
+  .footerGrid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    border-radius: 20px;
+    padding: 14px 18px;
+    gap: 10px;
+  }
+  .footerLeft,
+  .footerRight {
+    justify-content: center;
+  }
+}
